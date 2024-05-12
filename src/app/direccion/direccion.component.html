@@ -1,0 +1,53 @@
+<nav class="navbar navbar-light" style="background-color: #004e98; color: white">
+   
+    <div class="container-fluid">
+        <h3>Direcciones</h3>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+          <button class="btn btn-outline-light text-white" type="submit">Buscar</button>
+        </form>
+      </div>
+  </nav>
+
+  <div class ="table table-responsive">
+    <table class="table align-middle table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>clienteId</th>
+                <th>Alias</th>
+                <th>Calle</th>
+                <th>Ciuda</th>
+                <th>Provincia</th>
+                <th>Código Postal</th>
+                <th>Pais</th>
+                <th>fecha</th>
+                <th>acciones</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of direcciones">
+                <td>{{ item.addressId }}</td>
+                <td>{{ item.clienteId }}</td>
+                <td>{{ item.alias }}</td>
+                <td>{{ item.street }}</td>
+                <td>{{ item.city }}</td>
+                <td>{{ item.state }}</td>
+                <td>{{ item.zipCode }}</td>
+                <td>{{ item.country }}</td>
+                <td>{{ item.createAt | date: "dd/MM/yyyy" }}</td>
+                <td>
+                    <ng-container *ngIf="item.active then botonParaActivo; else botonParaInactivo" ></ng-container>
+                    <ng-template #botonParaActivo>
+                        <button [ngClass]="{'btn btn-danger': item.active}">desactivar</button>
+                    </ng-template>
+                    <ng-template #botonParaInactivo>
+                        <button [ngClass]="{'btn btn-success': !item.active}">activar</button>
+                    </ng-template>
+                    </td>
+
+            </tr>
+        </tbody>
+    </table>
+  </div>

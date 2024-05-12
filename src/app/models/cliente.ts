@@ -1,3 +1,4 @@
+import { Direccion } from "./direccion";
 
 export class Cliente {
     clienteId: number;
@@ -8,7 +9,7 @@ export class Cliente {
     createAt: Date;
     email: string;
     active: boolean;
-
+    addresses: Direccion[];
     constructor() {
         this.clienteId = 0
         this.name = ''
@@ -18,7 +19,7 @@ export class Cliente {
         this.createAt = new Date()
         this.email = ''
         this.active = true
-
+        this.addresses = []
 
     }
 }
